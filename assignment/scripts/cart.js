@@ -5,16 +5,17 @@ console.log('***** Cart Functions *****');
 let basket = [];
 const maxItems = 5;
 
-const isFull = (cart) => {
-    if (cart.length < maxItems) {
+const isFull = () => {
+    if (basket.length < maxItems) {
         return false;
-    } else if (cart.length >= maxItems) {
+    } else if (basket.length >= maxItems) {
         return true;
     }
 }
+// end isFull
 
 
-function addItem(item) {
+const addItem = item => {
     if (isFull(basket) == true) {
         return false
     } else {
@@ -37,21 +38,30 @@ console.log(addItem('oven'));
 console.log('this is what is in my basket:', basket);
 console.log(addItem('hat'));
 
-const listItems = (list) => {
-    for (each of list) {
+const listItems = () => {
+    for (each of basket) {
         console.log(each);
     }
 }
 // end listItems
+listItems();
 
-console.log(listItems(basket));
+const removeItem = item => {
+    if (basket.indexOf(item) >= 0) {
+        return basket.splice(basket.indexOf(item), 1);
+    } return null;
+}
 
-const empty = (list) => {
-    list.length = 0;
+
+console.log(`${removeItem('table')} was removed`);
+listItems(basket);
+
+const empty = () => {
+    basket.length = 0;
 }
 // end empty
 
-empty(basket);
+empty();
 console.log(basket);
 
 
