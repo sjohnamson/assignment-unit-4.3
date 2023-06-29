@@ -19,10 +19,10 @@ const addItem = item => {
     if (isFull(basket) == true) {
         return false
     } else {
-    basket.push(item);
-    for (each of basket) {
-        if (each == item) {
-            return true;
+        basket.push(item);
+        for (each of basket) {
+            if (each == item) {
+                return true;
             }
         }
     }
@@ -46,14 +46,11 @@ const listItems = () => {
 // end listItems
 listItems();
 
-const removeItem = item => {
-    if (basket.indexOf(item) >= 0) {
-        return basket.splice(basket.indexOf(item), 1);
-    } return null;
-}
+const removeItem = item => basket.indexOf(item) >= 0 ? basket.splice(basket.indexOf(item), 1) : null;
 
+// end removeItem
 
-console.log(`${removeItem('table')} was removed`);
+console.log(`${removeItem('toothbrush')} was removed`);
 listItems(basket);
 
 const empty = () => {
@@ -87,6 +84,6 @@ try {
         isFull: typeof isFull !== 'undefined' ? isFull : undefined,
         removeItem: typeof removeItem !== 'undefined' ? removeItem : undefined,
     };
-} catch(e) {
+} catch (e) {
     // Do nothing
 }
