@@ -5,23 +5,18 @@ console.log('***** Cart Functions *****');
 let basket = [];
 const maxItems = 5;
 
-const isFull = () => {
-    if (basket.length < maxItems) {
-        return false;
-    } else if (basket.length >= maxItems) {
-        return true;
-    }
-}
+// check to see if the basket is full
+const isFull = () => basket.length < maxItems ? false : true;
 // end isFull
 
-
+// add an item to the basket
 const addItem = item => {
-    if (isFull(basket) == true) {
+    if (isFull(basket) === true) {
         return false
     } else {
         basket.push(item);
-        for (each of basket) {
-            if (each == item) {
+        for (let each of basket) {
+            if (each === item) {
                 return true;
             }
         }
@@ -29,15 +24,16 @@ const addItem = item => {
 }
 // end addItem.
 
-console.log(addItem('pencil'));
-console.log(addItem('toothbrush'));
+console.log('Was pencil added?', addItem('pencil'));
+console.log('Was toothbrush added?', addItem('toothbrush'));
 console.log('this is what is in my basket:', basket);
-console.log(addItem('table'));
-console.log(addItem('rolling pin'));
-console.log(addItem('oven'));
+console.log('Was table added?', addItem('table'));
+console.log('Was rolling pin added?', addItem('rolling pin'));
+console.log('Was oven added?', addItem('oven'));
 console.log('this is what is in my basket:', basket);
-console.log(addItem('hat'));
+console.log('Was hat added?', addItem('hat'));
 
+// log a list of all items in basket
 const listItems = () => {
     console.log('List of items in my basket:')
     for (let each of basket) {
@@ -45,23 +41,18 @@ const listItems = () => {
     }
 }
 // end listItems
+
 listItems();
 
-function removeItem(item) {
-    if (basket.indexOf(item) >= 0) {
-        return basket.splice(basket.indexOf(item), 1)[0];
-     }
-    return null;
-}
-
+// remove an item from basket
+const removeItem = item => basket.indexOf(item) >= 0 ? basket.splice(basket.indexOf(item), 1)[0] : null;
 // end removeItem
 
 console.log(`${removeItem('toothbrush')} was REMOVED`);
 listItems(basket);
 
-const empty = () => {
-    basket.length = 0;
-}
+// empty the basket
+const empty = () => basket.length = 0;
 // end empty
 
 empty();
