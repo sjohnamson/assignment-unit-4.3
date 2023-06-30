@@ -39,18 +39,24 @@ console.log('this is what is in my basket:', basket);
 console.log(addItem('hat'));
 
 const listItems = () => {
-    for (each of basket) {
+    console.log('List of items in my basket:')
+    for (let each of basket) {
         console.log(each);
     }
 }
 // end listItems
 listItems();
 
-const removeItem = item => basket.indexOf(item) >= 0 ? basket.splice(basket.indexOf(item), 1) : null;
+function removeItem(item) {
+    if (basket.indexOf(item) >= 0) {
+        return basket.splice(basket.indexOf(item), 1)[0];
+     }
+    return null;
+}
 
 // end removeItem
 
-console.log(`${removeItem('toothbrush')} was removed`);
+console.log(`${removeItem('toothbrush')} was REMOVED`);
 listItems(basket);
 
 const empty = () => {
